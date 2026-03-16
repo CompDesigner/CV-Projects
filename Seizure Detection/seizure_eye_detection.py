@@ -1,5 +1,5 @@
 import cv2 as cv 
-import mediapipe as mp
+import mediapipe as mp #mediapipe ver: 0.10.9
 import numpy as npy 
 
 #Setup mapping for iris
