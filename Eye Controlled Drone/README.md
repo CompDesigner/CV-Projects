@@ -76,7 +76,7 @@ Tracking accuracy may vary depending on:
 * Camera quality
 * Lighting
 * Distance from camera
-## Lincense  
+## License  
 MIT Lincense  
 ## Acknowledgments
 
