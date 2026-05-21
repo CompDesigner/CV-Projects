@@ -25,7 +25,6 @@ Potential Usage:
 ## Installation
 
 ### 1. Clone the repository
-
 ```bash
 git clone https://github.com/CompDesigner/CV-Projects.git
 cd CV-Projects
