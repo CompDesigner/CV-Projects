@@ -27,8 +27,8 @@ Potential Usage:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/CompDesigner/eye-controller.git
-cd eye-controller
+git clone https://github.com/CompDesigner/CV-Projects.git
+cd CV-Projects
 ```
 ### 2. Install dependencies  
 ```bash
@@ -36,7 +36,7 @@ pip install opencv-python mediapipe numpy
 ```
 ### 3. Run script  
 ```bash
-python eye_controller.py
+python "Eye Controlled Drone/eye_controller.py"
 ```
 Press `ESC` to exit the application. 
 ## How It Works 
