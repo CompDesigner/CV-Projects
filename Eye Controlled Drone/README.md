@@ -27,7 +27,7 @@ Potential Usage:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/eye-controller.git
+git clone https://github.com/CompDesigner/eye-controller.git
 cd eye-controller
 ```
 ### 2. Install dependencies  
