@@ -78,5 +78,5 @@ MIT License
 
 ## Acknowledgements
 Special contributions to the project:
-* Google MediaPipe
-* OpenCV community
+* **Google MediaPipe**
+* **OpenCV community**
