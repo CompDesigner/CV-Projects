@@ -41,7 +41,7 @@ Press `ESC` to exit the application.
 ## How It Works 
 The program:   
 1.  Captures webcam frames using OpenCV
-2.  Uses MediaPipe Face Mesh to detecct facial landmarks
+2.  Uses MediaPipe Face Mesh to detect facial landmarks
 3.  Tracks iris positions
 4.  Calculates:
     - Horizontal eye ratio
