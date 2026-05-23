@@ -8,7 +8,7 @@ Potential Usage:
 * Accesibility tools
 * Gaze Tracking
 
-# Features 
+## Features 
 * Real-time webcam eye tracking
 * Iris landmark detection using MediaPipe
 * Horizontial and vertical eye movement estimation
@@ -16,7 +16,7 @@ Potential Usage:
 * Live visualization overlay
 * Easy to modify
 
-# Languages and Libraries  
+## Languages and Libraries  
 * Python
 * OpenCV
 * MediaPipe
@@ -37,7 +37,8 @@ pip install opencv-python mediapipe numpy
 ```bash
 python "Eye Controlled Drone/eye_controller.py"
 ```
-Press `ESC` to exit the application. 
+Press `ESC` to exit the application
+
 ## How It Works 
 The program:   
 1.  Captures webcam frames using OpenCV
@@ -50,33 +51,41 @@ The program:
     - Yaw (left/right movement)
     - Pitch (up/down movement)
 6.  Applies smoothing for stable motion values
+
 ## Output  
 ```text
 Yaw: -12.48, Pitch: 4.62
 Yaw: -10.82, Pitch: 3.76
 ```
+
 ## Structure  
 ```text
-eye_controller/
+Eye Controlled Drone/
 |
 |- eye_controller.py
 |- README.md
+|- LICENSE
 ```
+
 ## Requirements  
 * Python 3.9+
 * Webcam/Camera Sensor
 * Good lighting conditions
+
 ## Additional Info  
 MediaPipe Face Mesh landmark indices are used for:  
 * Iris centers
 * Eye corners
 * Upper/lower eyelids
+
 Tracking accuracy may vary depending on:
 * Camera quality
 * Lighting
 * Distance from camera
+
 ## License  
-MIT Lincense  
+MIT Lincense
+
 ## Acknowledgments
 
 This project would not have been possible without the following open-source contributions:
