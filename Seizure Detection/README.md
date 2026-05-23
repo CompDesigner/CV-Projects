@@ -36,4 +36,47 @@ Press `ESC` to exit the application
 The program:  
 1. Creates slight/fast thresholds
 2. Captures frames using OpenCV
-3. 
+3. Uses MediaPipe Face Mesh to detect facial landmarks
+4. Tracks iris motion
+5. Calculates:
+   - Iris center point
+   - Movement of the iris based on prior positioning verse center point
+6. Classifies motion:
+   - if no movement (none)
+   - if movement is less than slight threshold (slight)
+   - if movment is higher than fast threshold (fast)
+7. Classifies Seizure and Potential Seizure labeling based on motion
+
+## Output
+Is displayed in the left hand corner of the frame showing Seizure or Potential Seizure
+
+## Structure
+```text
+Seizure Detection/
+|
+|- seizure_eye_detection.py
+|- README.md
+|- LICENSE
+```
+
+## Requirements
+* Python 3.9+
+* Webcam/Camera Sensor
+* Decent lighting conditions
+
+## Additional Info
+MediaPipe Face Mesh landmark indices are used for:
+* Iris center
+* Eye corners
+* Upper/lower eyelids
+
+Movement is currently based on thresholds  
+Updates prior iris positioning  
+
+## License
+MIT License
+
+## Acknowledgements
+Special contributions to the project:
+* Google MediaPipe
+* OpenCV community
