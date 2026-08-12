@@ -82,16 +82,15 @@ def eye_aspect_ratio(eye_point):
 def get_iris_center (landmarks, iris_indices, frame_w, frame_h):
      
      center_points = npy.array(
-          [(landmarks[i].x * frame_w, landmarks[i].y * frame_h)] 
-          for i in iris_indices
-          )
+          [(landmarks[i].x * frame_w, landmarks[i].y * frame_h) 
+            for i in iris_indices])
      
      return npy.mean(center_points, axis=0) 
 
-def calculate_ied (iris_center, outer_corner, inner_corner):
+def calculate_ied (iris_center, inner_corner, outer_corner):
      eye_axis = outer_corner - inner_corner
 
-     denom = npy.linalg.norm(eye_axis)*2
+     denom = npy.linalg.norm(eye_axis)**2
 
      if denom == 0:
           return 0.5
@@ -333,6 +332,12 @@ while True:
                 
                 bilat_ied_var = npy.var(ied_buf)
 
+                '''left_ied_mean = npy.mean(left_ied_buf)
+                right_ied_mean = npy.mean(right_ied_buf)
+
+                left_ied_var = npy.var(left_ied_buf)
+                right_ied_var = npy.var(right_ied_buf)'''
+
                 #Deviation
                 bilat_dev = (bilat_ied_mean > 0.65 or bilat_ied_mean < 0.35)
 
@@ -342,6 +347,19 @@ while True:
                     ied_cnt += 1
                 else:
                     ied_cnt = 0
+
+                '''left_dev = (left_ied_mean > 0.65 or 
+                    left_ied_mean < 0.35)
+                right_dev = (right_ied_mean > 0.65 or 
+                    right_ied_mean < 0.35) 
+               
+                stable_ied = (left_ied_var < 0.002 and 
+                    right_ied_var < 0.002)
+                               
+                if left_dev and right_dev and stable_ied:
+                    ied_cnt += 1 
+                else:
+                    ied_cnt = 0'''
                      
                 #Risk Log
                 oscillation_detected = (
@@ -407,11 +425,15 @@ while True:
                cv.putText(frame, f"Bilateral Oscillation: {bilat_osc:.1f} Hz", 
                        (20, 130), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
                cv.putText(frame, f"Blink Frequency: {blink_fq:.1f} Hz", 
-                       (20, 160), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
-               cv.putText(frame, f"Bilateral IED: {bilat_ied_mean:.2f}",
+                       (20, 160), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2) 
+               '''cv.putText(frame, f"Left IED: {left_ied_mean:.2f}",
                        (20, 190), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
-               cv.putText(frame, f"IED Var: {bilat_ied_var:.4f}",
+               cv.putText(frame, f"Right IED: {right_ied_mean:.2f}",
+                       (20, 220), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)'''
+               cv.putText(frame, f"Bilateral IED: {bilat_ied_mean:.2f}",
                        (20, 250), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
+               cv.putText(frame, f"IED Var: {bilat_ied_var:.4f}",
+                       (20, 280), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
                '''cv.putText(frame, f"Speed: {left_spd_buf[-1]:.1f}",
                        (20, 280), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)'''
                cv.putText(frame, f"IED Counter: {ied_cnt}", 
