@@ -426,10 +426,6 @@ while True:
                        (20, 130), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
                cv.putText(frame, f"Blink Frequency: {blink_fq:.1f} Hz", 
                        (20, 160), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2) 
-               '''cv.putText(frame, f"Left IED: {left_ied_mean:.2f}",
-                       (20, 190), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
-               cv.putText(frame, f"Right IED: {right_ied_mean:.2f}",
-                       (20, 220), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)'''
                cv.putText(frame, f"Bilateral IED: {bilat_ied_mean:.2f}",
                        (20, 250), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
                cv.putText(frame, f"IED Var: {bilat_ied_var:.4f}",
@@ -440,6 +436,12 @@ while True:
                        (20,310), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200,200,200), 2)
                cv.putText(frame, f"OSC Counter: {osc_cnt}",
                        (20,340), cv.FONT_HERSHEY_SIMPLEX, 0.6,(200,200,200), 2)
+               '''cv.putText(frame, f"Left IED: {left_ied_mean:.2f}",
+                       (20, 190), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)
+                  cv.putText(frame, f"Right IED: {right_ied_mean:.2f}",
+                       (20, 220), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)'''
+               '''cv.putText(frame, f"Speed: {left_spd_buf[-1]:.1f}",
+                       (20, 280), cv.FONT_HERSHEY_SIMPLEX, 0.6, (200, 200, 200), 2)'''
 
     #Display the resulting frame
     cv.imshow("Seizure Detection", frame)

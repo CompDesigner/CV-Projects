@@ -1,13 +1,12 @@
 # Seizure Detection  
-A Python-based eye tracking program that uses OpenCV and MediaPipe Face Mesh. It detects also differentiates between a person have a potential seizure rather than a seizure 
-by the iris movement live feed. The program bases the movement off of two speed thresholds which determine slight/fast movement.
+A Python-based eye tracking program that uses OpenCV and MediaPipe Face Mesh. It determines the if a person is having a seizure by seizure risk scoring and the risk score is determined by calculated factors. The calculated factors are IED, Eye Aspect Ratio (EAR), excessive blinking and oscillation that determine the risk of having a seizure.
 
 ## Features
 * Real-time iris tracking
 * Iris landmark detection using MediaPipe
-* Calculates iris movement off of center iris point and prior iris position
+* Calculates iris movement off of center iris points and prior iris position
 * Live visual
-* Easy to modify
+* More realistic seizure detection
 
 ## Languages and Libraries
 * Python
@@ -34,21 +33,27 @@ Press `ESC` to exit the application
 
 ## How it works  
 The program:  
-1. Creates slight/fast thresholds
-2. Captures frames using OpenCV
+1. Defines temporal buffers, tracking variables and detection variables
+2. Creates three functions: eye_aspect_ratio, get_iris_center and calculate_ied  
 3. Uses MediaPipe Face Mesh to detect facial landmarks
-4. Tracks iris motion
+4. Utilizes get_iris_center function to determine left/right iris centers
 5. Calculates:
-   - Iris center point
-   - Movement of the iris based on prior positioning verse center point
-6. Classifies motion:
-   - if no movement (none)
-   - if movement is less than slight threshold (slight)
-   - if movment is higher than fast threshold (fast)
-7. Classifies Seizure and Potential Seizure labeling based on motion
+   - Bilateral center
+   - IED for left, right and bilateral
+   - Velocity for left, right and bilateral
+   - EAR 
+   - Blinking
+   - Temporal Analysis
+   - Frequency/Oscillation
+   - Deviation
+6. Classifies based on calculated values:
+   - if no/low risk score (Normal)
+   - if risk score is greater than or equal to 2 (suspicious/potential seizure)
+   - if risk score is greater than or equal to 4 (high risk/seizure)
+7. Classifies Normal, High Risk/Seizure and Suspicious/Potential Seizure labeling based on scoring 
 
 ## Output
-Is displayed in the left hand corner of the frame showing Seizure or Potential Seizure
+Is displayed in the left hand corner of the frame showing values and risk scoring
 
 ## Structure
 ```text
@@ -69,8 +74,7 @@ MediaPipe Face Mesh landmark indices are used for:
 * Iris center
 * Eye corners
 * Upper/lower eyelids
-
-Movement is currently based on thresholds  
+ 
 Updates prior iris positioning  
 
 ## License
